@@ -1,0 +1,36 @@
+<div class="text-sky-50 sticky top-0 w-2/3 my-2 mx-auto w-2/3 rounded-lg backdrop-filter backdrop-blur">
+  <div class="flex justify-between items-center">
+    <div>
+      <a class="flex items-center space-x-2" [routerLink]="'/home'">
+        <div>
+          <fa-icon [icon]="cloud" class="text-4xl"></fa-icon>
+        </div>
+        <div class="text-2xl">
+          Cloudy
+        </div>
+      </a>
+    </div>
+    <div>
+      <a [routerLink]="settingsUrl">
+        <fa-icon [icon]="coq" class="text-sky-50 text-xl"></fa-icon>
+      </a>
+    </div>
+    <!--<div class="cursor-pointer relative" (click)="openMenu()">
+      <fa-icon [icon]="menu"></fa-icon>
+      <ng-container *ngIf="show">
+        <div class="bg-sky-50 absolute top-6 right-2 p-4 w-44 text-sky-800 rounded-md primary-bg-color">
+          <div class="space-y-2">
+            <a [routerLink]="settingsUrl">
+              <fa-icon [icon]="coq" class="text-sky-800"></fa-icon>
+              Settings
+            </a>
+            <div>
+              To be continued...
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>-->
+
+</div>

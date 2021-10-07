@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+body {
+  @apply bg-gradient-to-b from-sky-800 to-sky-100;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.primary-bg-color {
+  @apply bg-sky-50;
+}
+
+.primary-text-color {
+  @apply text-sky-800;
+}
+
+.secondary-text-color {
+  @apply text-sky-50;
+}

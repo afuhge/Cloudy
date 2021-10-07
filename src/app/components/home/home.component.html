@@ -1,0 +1,43 @@
+<div class="absolute top-1/4 left-20 animate-flying">
+<img src="/assets/cloud.png">
+</div>
+<div class="absolute top-1/3 right-44 animate-flying">
+  <img src="/assets/cloud2.png">
+</div>
+
+<div class=" relative mx-auto my-28 w-2/3 rounded-lg p-8 backdrop-filter backdrop-blur"
+     style="background: rgba(240, 249, 255,0.2);box-shadow: 0 8px 32px 0 rgba( 7, 89, 133, 0.37 );">
+  <div class="flex flex-col space-y-16">
+    <div class="flex justify-end " id="search">
+      <fa-icon [icon]="search" class="text-sky-50"></fa-icon>
+      <input type="text"  class="px-2 text-sky-50 outline-none" style="background: none;" placeholder="search">
+      <fa-icon [icon]="reset" class="text-sky-50 cursor-pointer"></fa-icon>
+    </div>
+    <div class="flex space-x-8 justify-between">
+      <div class="font-semibold bg-sky-50 rounded-md p-4 w-1/3">
+        Today (Sunday)
+      </div>
+      <div class="grid grid-cols-3 gap-4 w-2/3">
+        <div class="bg-sky-50 rounded-md p-4">
+          Monday
+        </div>
+        <div class=" bg-sky-50 rounded-md p-4">
+          Tuesday
+        </div>
+        <div class=" bg-sky-50 rounded-md p-4">
+          Wednesday
+        </div>
+        <div class=" bg-sky-50 rounded-md p-4">
+          Thursday
+        </div>
+        <div class=" bg-sky-50 rounded-md p-4">
+          Friday
+        </div>
+        <div class=" bg-sky-50 rounded-md p-4">
+          Saturday
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
