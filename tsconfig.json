@@ -4,6 +4,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
+    "paths": {
+      "definitions": [
+        "dist/definitions/definitions",
+        "dist/definitions"
+      ]
+    },
     "sourceMap": true,
     "declaration": false,
     "downlevelIteration": true,
