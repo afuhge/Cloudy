@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import {RouterModule} from '@angular/router';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,9 +17,10 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
       {
         path: '',
         component: HomeComponent,
-      }
+      },
     ]),
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule,
   ],
   exports: [
     HomeComponent,

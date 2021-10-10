@@ -7,6 +7,9 @@ import {RouterModule} from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import {routes} from './routes';
+import { environment } from '../environments/environment';
+import { ENVIRONMENT } from './core/tokens/environment_token';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -19,8 +22,15 @@ import {routes} from './routes';
         HeaderModule,
       FontAwesomeModule,
         RouterModule.forRoot(routes),
+        HttpClientModule,
     ],
-  providers: [],
+  providers: [
+    HttpClient,
+    {
+      provide: ENVIRONMENT,
+      useValue: environment,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
