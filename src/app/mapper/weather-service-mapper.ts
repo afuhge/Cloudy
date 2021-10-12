@@ -1,17 +1,31 @@
 import { Injectable } from '@angular/core';
-import { ICloud, ICoordinates, IMain, ISys, IWeatherDescription, IWind, WeatherResponse } from '../services/models';
-import { Weather } from '../core/models';
-
-
+import { ICurrent, IDaily, WeatherForecastResponse, WeatherResponse } from '../services/models';
+import { ICurrentWeather, IDailyWeather, Weather, WeatherForecast } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherServiceMapper {
-  private response: Weather;
 
-  public parseCancellationResponse(source: WeatherResponse): Weather {
-    this.response = {
+  private static parseCurrentWeather(current: ICurrent): ICurrentWeather {
+    const response: ICurrentWeather = {
+      clouds: current.clouds,
+      feelsLike: current.feels_like,
+      humidity: current.humidity,
+      sunrise: current.sunrise,
+      sunset: current.sunset,
+      temp: current.temp,
+      uvi: current.uvi,
+      weather: current.weather,
+      windDeg: current.wind_deg,
+      windSpeed: current.wind_speed,
+    };
+
+    return response;
+  }
+
+  public parseWeatherResponse(source: WeatherResponse): Weather {
+    const response: Weather = {
       name: source.name,
       lat: source.coord.lat,
       lon: source.coord.lon,
@@ -30,6 +44,42 @@ export class WeatherServiceMapper {
       icon: source.weather.length > 0 ? source.weather[0].icon : null,
     };
 
-    return this.response;
+    return response;
+  }
+
+  public parseWeatherForecastResponse(source: WeatherForecastResponse): WeatherForecast {
+    const response: WeatherForecast = {
+      current: WeatherServiceMapper.parseCurrentWeather(source.current),
+      daily: this.parseDailyWeather(source.daily),
+    };
+
+    return response;
+  }
+
+  private parseDailyWeather(daily: IDaily[]): IDailyWeather[] {
+    const response: IDailyWeather[] = [];
+
+    daily.forEach((el: IDaily) => {
+      const day: IDailyWeather = {
+        clouds: el.clouds,
+        feelsLike: el.feels_like,
+        humidity: el.humidity,
+        sunrise: el.sunrise,
+        sunset: el.sunset,
+        moonset: el.moonset,
+        moonrise: el.moonrise,
+        temp: el.temp,
+        uvi: el.uvi,
+        weather: el.weather,
+        windDeg: el.wind_deg,
+        windGust: el.wind_gust,
+        windSpeed: el.wind_speed,
+        rain: el.rain,
+      };
+
+      response.push(day);
+    });
+
+    return response;
   }
 }

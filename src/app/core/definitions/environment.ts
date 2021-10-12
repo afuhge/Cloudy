@@ -1,3 +1,4 @@
 export interface IEnvironment  {
-  weatherService?: any;
+  weatherForecastService?: any;
+  cityService?: any;
 }

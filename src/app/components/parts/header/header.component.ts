@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
-import {faBars, faCloud, faCog} from '@fortawesome/free-solid-svg-icons';
+import { faBars, faCloud, faInfoCircle } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-header',
@@ -10,10 +10,10 @@ import {faBars, faCloud, faCog} from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
   public cloud: IconDefinition = faCloud;
   public menu: IconDefinition = faBars;
-  public coq: IconDefinition = faCog;
+  public info: IconDefinition = faInfoCircle;
 
   public show = false;
-  public settingsUrl: string = '/settings';
+  public infoUrl: string = '/info';
   constructor() { }
 
   ngOnInit(): void {
