@@ -45,8 +45,15 @@ export interface IDaily {
   rain: string;
 }
 
+export interface IAlerts {
+  description: string;
+  event: string;
+  start: string;
+  end: string;
+}
 
 export interface WeatherForecastResponse {
+  alerts: IAlerts[];
   current: ICurrent;
   daily: IDaily[];
 }

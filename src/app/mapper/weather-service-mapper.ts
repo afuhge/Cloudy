@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { ICurrent, IDaily, WeatherForecastResponse, WeatherResponse } from '../services/models';
-import { ICurrentWeather, IDailyWeather, Weather, WeatherForecast } from '../core/models';
+import { IAlerts, ICurrent, IDaily, WeatherForecastResponse } from '../services/models';
+import { ICurrentWeather, IDailyWeather, IWeatherAlert, WeatherForecast } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +8,10 @@ import { ICurrentWeather, IDailyWeather, Weather, WeatherForecast } from '../cor
 export class WeatherServiceMapper {
 
   private static parseCurrentWeather(current: ICurrent): ICurrentWeather {
+    if (!current) {
+      return;
+    }
+
     const response: ICurrentWeather = {
       clouds: current.clouds,
       feelsLike: current.feels_like,
@@ -24,31 +28,12 @@ export class WeatherServiceMapper {
     return response;
   }
 
-  public parseWeatherResponse(source: WeatherResponse): Weather {
-    const response: Weather = {
-      name: source.name,
-      lat: source.coord.lat,
-      lon: source.coord.lon,
-      windDeg: source.wind.deg,
-      windSpeed: source.wind.speed,
-      windGust: source.wind.gust,
-      temp: source.main.temp,
-      tempMin: source.main.temp_min,
-      tempMax: source.main.temp_max,
-      humidity: source.main.humidity,
-      feelsLike: source.main.feels_like,
-      clouds: source.clouds.all,
-      sunrise: source.sys.sunrise,
-      sunset: source.sys.sunset,
-      description: source.weather.length > 0 ? source.weather[0].description : null,
-      icon: source.weather.length > 0 ? source.weather[0].icon : null,
-    };
-
-    return response;
-  }
-
   public parseWeatherForecastResponse(source: WeatherForecastResponse): WeatherForecast {
+    if (!source) {
+      return;
+    }
     const response: WeatherForecast = {
+      alerts: this.parseAlertWeather(source.alerts),
       current: WeatherServiceMapper.parseCurrentWeather(source.current),
       daily: this.parseDailyWeather(source.daily),
     };
@@ -58,6 +43,9 @@ export class WeatherServiceMapper {
 
   private parseDailyWeather(daily: IDaily[]): IDailyWeather[] {
     const response: IDailyWeather[] = [];
+    if (!daily) {
+      return;
+    }
 
     daily.forEach((el: IDaily) => {
       const day: IDailyWeather = {
@@ -78,6 +66,27 @@ export class WeatherServiceMapper {
       };
 
       response.push(day);
+    });
+
+    return response;
+  }
+
+  private parseAlertWeather(alerts: IAlerts[]): IWeatherAlert[] {
+    const response: IWeatherAlert[] = [];
+
+    if (!alerts) {
+      return;
+    }
+
+    alerts.forEach((el: IAlerts) => {
+      const alert: IWeatherAlert = {
+        end: el.end,
+        description: el.description,
+        event: el.event,
+        start: el.start,
+      };
+
+      response.push(alert);
     });
 
     return response;

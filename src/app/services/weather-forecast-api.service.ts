@@ -4,9 +4,9 @@ import { WeatherServiceMapper } from '../mapper/weather-service-mapper';
 import { ENVIRONMENT } from '../core/tokens/environment_token';
 import { IEnvironment } from '../core/definitions/environment';
 import { Observable } from 'rxjs';
-import { WeatherForecast } from '../core/models';
+import { ICoordinates, WeatherForecast } from '../core/models';
 import { map } from 'rxjs/operators';
-import { ICoordinates, WeatherForecastResponse } from './models';
+import { WeatherForecastResponse } from './models';
 import { WeatherForecastUrlHelperService } from './weather-forecast-url-helper.service';
 
 @Injectable({
@@ -29,6 +29,7 @@ export class WeatherForecastApiService {
 
     return this.http.get(url)
       .pipe(map((response: WeatherForecastResponse) => {
+        console.log(response);
         return this.weatherMapper.parseWeatherForecastResponse(response);
       }));
   }
