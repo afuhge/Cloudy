@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
-import { faBolt, faMapMarkerAlt, faSearch, faSmog, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBolt, faMapMarkerAlt, faSearch, faSearchLocation, faSmog, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ICity, ICoordinates, WeatherForecast } from '../../core/models';
 import { WeatherForecastApiService } from '../../services/weather-forecast-api.service';
@@ -12,11 +12,6 @@ import { CityApiService } from '../../services/city-api.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor(
-    private weatherForecastService: WeatherForecastApiService,
-    private cityService: CityApiService,
-  ) { }
   public search: IconDefinition = faSearch;
   public reset: IconDefinition = faTimes;
 
@@ -26,8 +21,8 @@ export class HomeComponent implements OnInit {
   public city = '';
   public country = '';
   public marker: IconDefinition = faMapMarkerAlt;
-  public weather: IconDefinition = faBolt;
-  public isLoading = true;
+  public weather: IconDefinition = faSearchLocation;
+  public isLoading = false;
   public showResults = false;
   public weatherForecast: WeatherForecast;
 
@@ -35,16 +30,21 @@ export class HomeComponent implements OnInit {
 
   public suggestions: ICity[] = [];
 
+  constructor(
+    private weatherForecastService: WeatherForecastApiService,
+    private cityService: CityApiService,
+  ) {
+    this.searchForm.valueChanges.subscribe((value) => {
+      this.searchCity();
+    });
+  }
+
   private showPosition(position): void {
     const currentLocation: ICoordinates = {
       lon: position.coords.longitude,
       lat: position.coords.latitude,
     };
     this.fetchWeatherForecast(currentLocation);
-
-    this.searchForm.valueChanges.subscribe((value) => {
-      this.searchCity();
-    });
   }
 
   ngOnInit(): void {
@@ -82,6 +82,7 @@ export class HomeComponent implements OnInit {
 
   public fetchWeatherForecast(currentLocation: ICoordinates): void {
     if ( currentLocation) {
+      this.isLoading = true;
       this.weatherForecastService.fetchWeatherForecast(currentLocation)
         .subscribe((response: WeatherForecast) => {
           this.city = 'Current Location';

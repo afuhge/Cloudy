@@ -29,7 +29,7 @@ export class DailyWidgetComponent implements OnInit {
   public windDirectionClasses: any;
   public rain: string;
 
-  private static convertWindDegreeInDirection(windDegree: number): string {
+  public static convertWindDegreeInDirection(windDegree: number): string {
       const val = Math.floor((windDegree / 22.5) + 0.5);
       const arr: string [] = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'];
       return arr[(val % 16)];

@@ -1,6 +1,96 @@
 <div class="space-y-2">
-    <div class="font-semibold primary-text-color text-xl"><span class="text-2xl">Today</span>, {{ today | date:'mediumDate' }}</div>
-    <div>
- {{ day | json}}
-    </div>
+    <div class="font-semibold primary-text-color text-xl"><span class="text-2xl">Today</span>
+        <span
+                class="text-lg font-medium"> - {{ description }}</span></div>
+   <!-- <div class="flex space-x-4 justify-between">
+        <div class="flex flex-col items-center">
+            <div>
+                <img class="filter drop-shadow-2xl"
+                     style="width:75px; height:auto; filter: drop-shadow(4px 4px 15px #70818a);"
+                     [src]="'http://openweathermap.org/img/w/' + icon +'.png'">
+            </div>
+        </div>
+        <div class="flex flex-col items-center space-y-4">
+            <div>
+                <fa-icon [icon]="tempIcon" [fixedWidth]="true" class="text-sky-900 text-xl"></fa-icon>
+            </div>
+            <div class="primary-text-color">
+                <span class="text-2xl font-semibold">{{ currentTemp | convertUnits }}</span>
+            </div>
+        </div>
+        <div class="flex flex-col items-center space-y-6">
+            <div>
+                <fa-icon [icon]="umbrella" [fixedWidth]="true" class="text-sky-900 text-xl"></fa-icon>
+            </div>
+            <div class="primary-text-color">
+                {{ rain | convertUnits: 'rain' }}
+            </div>
+        </div>
+        <div class="flex flex-col items-center space-y-6">
+            <div>
+                <div class="primary-text-color flex space-x-1 items-center">
+                    <div [ngClass]="windDirectionClasses">
+                        <fa-icon [icon]="arrow" [fixedWidth]="true" class="text-xl text-sky-900"></fa-icon>
+                    </div>
+                    <div class="font-semibold">{{ windDirection }}</div>
+                </div>
+            </div>
+            <div class="primary-text-color">
+                <div> {{ day.windSpeed | convertUnits :'wind'}}</div>
+            </div>
+        </div>
+    </div> -->
+        <div class="flex space-x-4 justify-between">
+            <div>
+                <img class="filter drop-shadow-2xl"
+                     style="width:75px; height:auto; filter: drop-shadow(4px 4px 15px #70818a);"
+                     [src]="'http://openweathermap.org/img/w/' + icon +'.png'">
+
+            </div>
+            <div class="primary-text-color">
+                <div>
+                    sunrise {{ sunrise | date: 'shortTime' }}
+                </div>
+                <div>
+                    sunset {{ sunset | date: 'shortTime' }}
+                </div>
+                <div>
+                    uvi {{ uvi }}
+                </div>
+                <div>
+                    humidity {{ humidity }}
+                </div>
+            </div>
+        </div>
+        <div class="flex justify-between">
+            <div class="flex flex-col items-center space-y-4">
+                <div>
+                    <fa-icon [icon]="tempIcon" [fixedWidth]="true" class="text-sky-900 text-xl"></fa-icon>
+                </div>
+                <div class="primary-text-color">
+                    <span class="text-2xl font-semibold">{{ currentTemp | convertUnits }}</span>
+                </div>
+            </div>
+            <div class="flex flex-col items-center space-y-6">
+                <div>
+                    <fa-icon [icon]="umbrella" [fixedWidth]="true" class="text-sky-900 text-xl"></fa-icon>
+                </div>
+                <div class="primary-text-color">
+                    {{ rain | convertUnits: 'rain' }}
+                </div>
+            </div>
+            <div class="flex flex-col items-center space-y-6">
+                <div>
+                    <div class="primary-text-color flex space-x-1 items-center">
+                        <div [ngClass]="windDirectionClasses">
+                            <fa-icon [icon]="arrow" [fixedWidth]="true" class="text-xl text-sky-900"></fa-icon>
+                        </div>
+                        <div class="font-semibold">{{ windDirection }}</div>
+                    </div>
+                </div>
+                <div class="primary-text-color">
+                    <div> {{ day.windSpeed | convertUnits :'wind'}}</div>
+                </div>
+            </div>
+        </div>
 </div>

@@ -9,6 +9,8 @@ export interface ICurrent {
   weather: IWeather[];
   wind_deg: number;
   wind_speed: string;
+  rain?: any;
+  snow?: any;
 }
 
 export interface  IWeather {

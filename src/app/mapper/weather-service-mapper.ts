@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAlerts, ICurrent, IDaily, WeatherForecastResponse } from '../services/models';
-import { ICurrentWeather, IDailyWeather, IWeatherAlert, WeatherForecast } from '../core/models';
+import { ICurrentWeather, IDailyWeather, IRain, ISnow, IWeatherAlert, WeatherForecast } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -23,9 +23,37 @@ export class WeatherServiceMapper {
       weather: current.weather,
       windDeg: current.wind_deg,
       windSpeed: current.wind_speed,
+      rain: this.parseRain(current.rain),
+      snow: this.parseSnow(current.snow),
     };
 
     return response;
+  }
+
+  private static parseRain(source: any): IRain {
+    if (!source) {
+      return;
+    }
+
+    const rain: IRain = {
+      lastThreeHours: source['3h'],
+      lastOneHour: source['1h'],
+    };
+
+    return rain;
+  }
+
+  private static parseSnow(source: any): ISnow {
+    if (!source) {
+      return;
+    }
+
+    const snow: ISnow = {
+      lastThreeHours: source['3h'],
+      lastOneHour: source['1h'],
+    };
+
+    return snow;
   }
 
   public parseWeatherForecastResponse(source: WeatherForecastResponse): WeatherForecast {

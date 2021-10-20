@@ -9,7 +9,19 @@ export interface ICurrentWeather {
   weather: IWeather[];
   windDeg: number;
   windSpeed: string;
+  rain?: IRain;
+  snow?: ISnow;
 }
+
+export interface  IRain {
+  lastOneHour?: string;
+  lastThreeHours?: string;
+}
+export interface  ISnow {
+  lastOneHour?: string;
+  lastThreeHours?: string;
+}
+
 
 export interface  IWeather {
   description: string;
