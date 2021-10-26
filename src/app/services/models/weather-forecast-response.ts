@@ -50,8 +50,8 @@ export interface IDaily {
 export interface IAlerts {
   description: string;
   event: string;
-  start: string;
-  end: string;
+  start: number;
+  end: number;
 }
 
 export interface WeatherForecastResponse {

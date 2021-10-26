@@ -60,8 +60,8 @@ export interface IDailyWeather {
 export interface  IWeatherAlert {
   description: string;
   event: string;
-  start: string;
-  end: string;
+  start: number;
+  end: number;
 }
 
 

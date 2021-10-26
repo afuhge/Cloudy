@@ -1,17 +1,22 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ICurrentWeather } from '../../../core/models';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import { faLocationArrow, faTemperatureHigh, faUmbrella, faWind } from '@fortawesome/free-solid-svg-icons';
+import {
+  faExclamationTriangle, faLocationArrow, faLongArrowAltDown, faLongArrowAltUp, faSun, faTemperatureHigh, faUmbrella, faWind,
+} from '@fortawesome/free-solid-svg-icons';
 import { DailyWidgetComponent } from '../daily-widget/daily-widget.component';
+import { IAlerts } from '../../../services/models';
 
 @Component({
   selector: 'app-current-widget',
   templateUrl: './current-widget.component.html',
+  styleUrls: ['./current-widget.component.scss'],
 })
 export class CurrentWidgetComponent implements OnInit {
 
   @Input() day: ICurrentWeather;
   @Input() today: Date;
+  @Input() alerts: IAlerts;
 
   public icon: string;
   public description: string;
@@ -20,9 +25,13 @@ export class CurrentWidgetComponent implements OnInit {
   public wind: IconDefinition = faWind;
   public umbrella: IconDefinition = faUmbrella;
   public tempIcon: IconDefinition = faTemperatureHigh;
+  public arrow: IconDefinition = faLocationArrow;
+  public sun: IconDefinition = faSun;
+  public up: IconDefinition = faLongArrowAltUp;
+  public down: IconDefinition = faLongArrowAltDown;
+
   public date: Date;
   public windDirection: string;
-  public arrow: IconDefinition = faLocationArrow;
   public windDirectionClasses: any;
   public rain: string;
   public feelsLike: string;
@@ -30,8 +39,11 @@ export class CurrentWidgetComponent implements OnInit {
   public sunrise: Date;
   public sunset: Date;
   public uvi: string;
+  public weatherAlert: IAlerts;
+  public alertIcon: IconDefinition = faExclamationTriangle;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     if (this.day) {
@@ -42,11 +54,19 @@ export class CurrentWidgetComponent implements OnInit {
       this.currentTemp = this.day.temp;
       this.feelsLike = this.day.feelsLike;
       this.uvi = this.day.uvi;
-      this.sunset = new Date((+this.day.sunset) * 1000);
-      this.sunrise = new Date((+this.day.sunrise) * 1000);
+      this.sunset = new Date((
+        +this.day.sunset
+      ) * 1000);
+      this.sunrise = new Date((
+        +this.day.sunrise
+      ) * 1000);
       this.humidity = this.day.humidity;
       this.windDirection = DailyWidgetComponent.convertWindDegreeInDirection(this.day.windDeg);
       this.setWindDirectionClasses();
+    }
+
+    if (this.alerts) {
+      this.weatherAlert = this.alerts;
     }
   }
 
