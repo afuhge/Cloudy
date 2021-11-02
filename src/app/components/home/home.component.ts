@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit} from '@angular/core';
 import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
-import { faBolt, faMapMarkerAlt, faSearch, faSearchLocation, faSmog, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faMapMarkerAlt, faSearch, faSearchLocation, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ICity, ICoordinates, WeatherForecast } from '../../core/models';
 import { WeatherForecastApiService } from '../../services/weather-forecast-api.service';
 import { CityApiService } from '../../services/city-api.service';
+import {ShowCurrentWeatherDetailsService} from '../../services/show-current-weather-details.service';
 
 @Component({
   selector: 'app-home',
@@ -29,14 +30,17 @@ export class HomeComponent implements OnInit {
   public today: Date = new Date();
 
   public suggestions: ICity[] = [];
+  public showDetails = this.showDetailsService.showDetails;
 
   constructor(
     private weatherForecastService: WeatherForecastApiService,
     private cityService: CityApiService,
+    private showDetailsService: ShowCurrentWeatherDetailsService,
   ) {
     this.searchForm.valueChanges.subscribe((value) => {
       this.searchCity();
     });
+
   }
 
   private showPosition(position): void {
@@ -49,7 +53,20 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentLocation();
+  }
 
+  private calculateCurrentWidgetHeight(): void {
+    const currentWidgt: HTMLElement = document.getElementById('currentWidget');
+    const dailyWidget: NodeListOf<HTMLElement> = document.querySelectorAll('app-daily-widget');
+    if (dailyWidget && currentWidgt) {
+      currentWidgt.style.height = '' + (dailyWidget[0].offsetHeight * 2 + 16) + 'px';
+    }
+  }
+
+
+  @HostListener('window:resize', ['$event'])
+  public onResize(event): void {
+   this.calculateCurrentWidgetHeight();
   }
 
   private getCurrentLocation(): void {
@@ -111,5 +128,9 @@ export class HomeComponent implements OnInit {
   public resetForm(): void {
     this.searchForm.reset();
     this.showResults = false;
+  }
+
+  public setShowDetails(): void {
+    this.showDetailsService.showDetails.next(false);
   }
 }

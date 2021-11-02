@@ -6,6 +6,8 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CurrentWidgetModule } from '../parts/current-widget/current-widget.module';
 import { DailyWidgetModule } from '../parts/daily-widget/daily-widget.module';
+import {WeatherForecastModule} from '../parts/weather-forecast/weather-forecast.module';
+import {TodayModule} from '../parts/today-forecast/today.module';
 
 
 
@@ -25,6 +27,8 @@ import { DailyWidgetModule } from '../parts/daily-widget/daily-widget.module';
     ReactiveFormsModule,
     CurrentWidgetModule,
     DailyWidgetModule,
+    WeatherForecastModule,
+    TodayModule,
   ],
   exports: [
     HomeComponent,

@@ -1,0 +1,14 @@
+<div class="flex 2xl:space-x-8 2xl:justify-between 2xl:flex-row 2xl:items-start flex-col items-end">
+  <div id="currentWidget" class="cursor-pointer current font-semibold rounded-md p-4 2xl:w-1/3 w-full mb-4 primary-bg-color">
+    <app-current-widget (click)="showTodayDetails()" [day]="weatherForecast.current" [today]="today" [alerts]="weatherForecast.alerts"
+    ></app-current-widget>
+  </div>
+  <div class="grid 2xl:grid-cols-3 grid-cols-1 gap-4 2xl:w-2/3 w-full">
+    <app-daily-widget id="dailayWidget" *ngFor="let day of weatherForecast.daily; let i = index" [day]="day"
+                      [index]="i" [today]="today"
+                      class="rounded-md p-4" style="background: linear-gradient(135deg, #F0F9FF, rgba(240,249,255,0.3));">
+    </app-daily-widget>
+  </div>
+
+
+</div>

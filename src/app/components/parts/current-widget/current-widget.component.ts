@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ICurrentWeather } from '../../../core/models';
+import {ICurrentWeather, IWeatherAlert} from '../../../core/models';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faExclamationTriangle, faLocationArrow, faLongArrowAltDown, faLongArrowAltUp, faSun, faTemperatureHigh, faUmbrella, faWind,
@@ -16,7 +16,7 @@ export class CurrentWidgetComponent implements OnInit {
 
   @Input() day: ICurrentWeather;
   @Input() today: Date;
-  @Input() alerts: IAlerts;
+  @Input() alerts: IWeatherAlert[];
 
   public icon: string;
   public description: string;
@@ -39,7 +39,7 @@ export class CurrentWidgetComponent implements OnInit {
   public sunrise: Date;
   public sunset: Date;
   public uvi: string;
-  public weatherAlert: IAlerts;
+  public weatherAlert: IWeatherAlert[];
   public alertIcon: IconDefinition = faExclamationTriangle;
 
   constructor() {
@@ -66,7 +66,7 @@ export class CurrentWidgetComponent implements OnInit {
     }
 
     if (this.alerts) {
-      this.weatherAlert = this.alerts;
+      this.weatherAlert = [...this.alerts];
     }
   }
 
