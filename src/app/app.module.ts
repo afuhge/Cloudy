@@ -10,12 +10,13 @@ import {routes} from './routes';
 import { environment } from '../environments/environment';
 import { ENVIRONMENT } from './core/tokens/environment_token';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { BaseTodayModule } from './components/base-today/base-today.module';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
     imports: [
         BrowserModule,
@@ -23,6 +24,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
       FontAwesomeModule,
         RouterModule.forRoot(routes),
         HttpClientModule,
+        BaseTodayModule,
     ],
   providers: [
     HttpClient,

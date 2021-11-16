@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TodayComponent } from './today.component';
 import {RouterModule} from '@angular/router';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TemperaturePipeModule } from '../../../core/pipes';
 
 
 
@@ -14,6 +16,8 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     CommonModule,
-  ]
+    FontAwesomeModule,
+    TemperaturePipeModule,
+  ],
 })
 export class TodayModule { }

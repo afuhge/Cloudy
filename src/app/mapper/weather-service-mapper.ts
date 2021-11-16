@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { IAlerts, ICurrent, IDaily, WeatherForecastResponse } from '../services/models';
-import { ICurrentWeather, IDailyWeather, IRain, ISnow, IWeatherAlert, WeatherForecast } from '../core/models';
+import { IAlerts, ICurrent, IDaily, IHourly, WeatherForecastResponse } from '../services/models';
+import { ICurrentWeather, IDailyWeather, IHourlyWeather, IRain, ISnow, IWeatherAlert, WeatherForecast } from '../core/models';
 
 @Injectable({
   providedIn: 'root',
@@ -64,6 +64,7 @@ export class WeatherServiceMapper {
       alerts: this.parseAlertWeather(source.alerts),
       current: WeatherServiceMapper.parseCurrentWeather(source.current),
       daily: this.parseDailyWeather(source.daily),
+      hourly: this.parseHourlyWeather(source.hourly),
     };
 
     return response;
@@ -115,6 +116,33 @@ export class WeatherServiceMapper {
       };
 
       response.push(alert);
+    });
+
+    return response;
+  }
+
+  private parseHourlyWeather(hourly: IHourly[]): IHourlyWeather[] {
+    const response: IHourlyWeather[] = [];
+
+    if (!hourly) {
+      return;
+    }
+
+    hourly.forEach((el: IHourly) => {
+      const hour: IHourlyWeather = {
+        clouds: el.clouds,
+        feels_like: el.feels_like,
+        humidity: el.humidity,
+        temp: el.temp,
+        uvi: el.uvi,
+        weather: el.weather,
+        wind_deg: el.wind_deg,
+        wind_gust: el.wind_gust,
+        wind_speed: el.wind_speed,
+        rain: el.rain,
+      };
+
+      response.push(hour);
     });
 
     return response;

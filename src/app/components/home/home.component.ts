@@ -27,20 +27,17 @@ export class HomeComponent implements OnInit {
   public showResults = false;
   public weatherForecast: WeatherForecast;
 
-  public today: Date = new Date();
-
   public suggestions: ICity[] = [];
-  public showDetails = this.showDetailsService.showDetails;
 
   constructor(
     private weatherForecastService: WeatherForecastApiService,
     private cityService: CityApiService,
-    private showDetailsService: ShowCurrentWeatherDetailsService,
+    public showDetailsService: ShowCurrentWeatherDetailsService,
   ) {
     this.searchForm.valueChanges.subscribe((value) => {
       this.searchCity();
     });
-
+    this.showDetailsService.hide();
   }
 
   private showPosition(position): void {
@@ -53,20 +50,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCurrentLocation();
-  }
-
-  private calculateCurrentWidgetHeight(): void {
-    const currentWidgt: HTMLElement = document.getElementById('currentWidget');
-    const dailyWidget: NodeListOf<HTMLElement> = document.querySelectorAll('app-daily-widget');
-    if (dailyWidget && currentWidgt) {
-      currentWidgt.style.height = '' + (dailyWidget[0].offsetHeight * 2 + 16) + 'px';
-    }
-  }
-
-
-  @HostListener('window:resize', ['$event'])
-  public onResize(event): void {
-   this.calculateCurrentWidgetHeight();
   }
 
   private getCurrentLocation(): void {
@@ -131,6 +114,6 @@ export class HomeComponent implements OnInit {
   }
 
   public setShowDetails(): void {
-    this.showDetailsService.showDetails.next(false);
+    this.showDetailsService.hide();
   }
 }

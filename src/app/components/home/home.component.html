@@ -33,19 +33,19 @@
                   <fa-icon [icon]="marker" class="primary-text-color text-xl"></fa-icon>
                   <span class="font-semibold">{{ city }} <span *ngIf="country.length > 0">-&nbsp;</span>{{ country }}</span>
                 </div>
-                <div (click)="setShowDetails()" *ngIf="showDetails | async" class="font-semibold cursor-pointer inline-block bg-sky-800 rounded-md p-2 secondary-bg-color secondary-text-color">
+                <div (click)="setShowDetails()" *ngIf="this.showDetailsService.showDetails$ | async" class="font-semibold cursor-pointer inline-block bg-sky-800 rounded-md p-2 secondary-bg-color secondary-text-color">
                   Back
                 </div>
               </div>
 
-              <ng-container *ngIf="!(showDetails | async); else todayDetails">
+              <ng-container *ngIf="!(this.showDetailsService.showDetails$ | async); else todayDetails">
                 <div>
-                  <app-weather-forecast [today]="today" [weatherForecast]="weatherForecast"></app-weather-forecast>
+                  <app-weather-forecast [weatherForecast]="weatherForecast"></app-weather-forecast>
                 </div>
               </ng-container>
              <ng-template #todayDetails>
                <div>
-                 <app-today></app-today>
+                 <app-today [current]="weatherForecast.current" [hourly]="weatherForecast.hourly" [alerts]="weatherForecast.alerts"></app-today>
                </div>
              </ng-template>
             </div>

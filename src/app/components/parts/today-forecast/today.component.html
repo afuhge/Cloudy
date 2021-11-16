@@ -1,1 +1,93 @@
-<div>today works</div>
+<div class="space-y-2 font-semibold rounded-md p-4 w-full mb-4 primary-bg-color">
+    <div class="flex justify-between items-center primary-text-color text-2xl mb-4">
+        <div>Now,  {{ today | date: 'shortTime' }}</div>
+        <div class="flex space-x-2 items-center" *ngIf="weatherAlert">
+            <div>
+                <fa-icon [icon]="alertIcon" class="text-red-500 text-2xl" [fixedWidth]="true"></fa-icon>
+            </div>
+            <div class="text-sm text-red-500">
+                <div>
+                    {{ weatherAlert[0].event }}
+                </div>
+                <div>
+                    {{ weatherAlert[0].start | date: 'shortTime' }} - {{ weatherAlert[0].end | date: 'shortTime'}}
+                </div>
+            </div>
+        </div>
+        <div class="text-sm flex space-x-4">
+            <div>
+                <fa-icon [icon]="sun"></fa-icon>
+                <fa-icon [icon]="up"></fa-icon>
+                {{ sunrise  | date: 'shortTime'}}
+            </div>
+            <div>
+                <fa-icon [icon]="sun"></fa-icon>
+                <fa-icon [icon]="down"></fa-icon>
+                {{ sunset  | date: 'shortTime'}}
+            </div>
+        </div>
+    </div>
+    <div class="flex justify-around items-center pb-4">
+        <div class="primary-text-color  space-y-4 flex flex-col items-center">
+            <div class="font-semibold text-6xl">
+                {{ currentTemp | convertUnits }}
+            </div>
+            <div>
+                Feels like: {{ feelsLike | convertUnits}}
+            </div>
+
+        </div>
+        <div class="flex flex-col items-center ">
+            <img class="filter drop-shadow-2xl"
+                 style="width:85px; height:auto; filter: drop-shadow(4px 4px 15px #70818a);"
+                 [src]="'http://openweathermap.org/img/w/' + icon +'.png'">
+            <div class="primary-text-color">
+                {{ description }}
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-around pt-4 border-t-2 border-sky-100">
+        <div class="flex flex-col space-y-2 justify-center items-start">
+            <div class="flex space-x-2 items-end">
+                <div>
+                    <fa-icon [icon]="umbrella" [fixedWidth]="true" class="text-sky-900"></fa-icon>
+                </div>
+                <div class="primary-text-color">
+                    {{ rain | convertUnits: 'rain' }}
+                </div>
+            </div>
+            <div class="flex space-x-2 items-end">
+                <div class="flex space-x-2 items-end">
+                    <div [ngClass]="windDirectionClasses">
+                        <fa-icon [icon]="arrow" [fixedWidth]="true" class="text-sky-900"></fa-icon>
+                    </div>
+                    <div class="primary-text-color">{{ windDirection }}</div>
+                </div>
+
+                <div class="primary-text-color">
+                    <div> {{ current.windSpeed | convertUnits :'wind'}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col space-y-2 justify-center items-start primary-text-color">
+            <div class="flex space-x-2 items-end">
+                <div>
+                    UV-Index:
+                </div>
+                <div>
+                    <div> {{ uvi }}</div>
+                </div>
+            </div>
+            <div class="flex space-x-2 items-end">
+                <div>
+                    Humidity:
+                </div>
+
+                <div>
+                    <div> {{ humidity}}%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

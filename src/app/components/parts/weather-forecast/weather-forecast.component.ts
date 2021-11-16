@@ -10,7 +10,7 @@ import {ShowCurrentWeatherDetailsService} from '../../../services/show-current-w
 })
 export class WeatherForecastComponent implements OnInit {
   @Input() public weatherForecast: WeatherForecast;
-  @Input() public today: Date;
+  public today: Date = new Date();
 
   constructor(
     private router: Router,
@@ -22,6 +22,6 @@ export class WeatherForecastComponent implements OnInit {
 
 
   public showTodayDetails(): void {
-    this.showDetailsService.showDetails.next(true);
+    this.showDetailsService.show();
   }
 }

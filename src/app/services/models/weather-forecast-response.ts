@@ -47,6 +47,19 @@ export interface IDaily {
   rain: string;
 }
 
+export interface IHourly {
+    clouds: number;
+    feels_like: string;
+    humidity: number;
+    temp: string;
+    uvi: string;
+    weather: IWeather[];
+    wind_deg: number;
+    wind_gust: string;
+    wind_speed: string;
+    rain: string;
+}
+
 export interface IAlerts {
   description: string;
   event: string;
@@ -58,4 +71,5 @@ export interface WeatherForecastResponse {
   alerts: IAlerts[];
   current: ICurrent;
   daily: IDaily[];
+  hourly: IHourly[];
 }
