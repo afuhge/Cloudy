@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import {ICurrentWeather, IWeatherAlert} from '../../../core/models';
 import { DailyWidgetComponent } from '../daily-widget/daily-widget.component';
 import { BaseTodayComponent } from '../../base-today/base-today.component';
+import {ShowCurrentWeatherDetailsService} from '../../../services/show-current-weather-details.service';
 
 @Component({
   selector: 'app-current-widget',

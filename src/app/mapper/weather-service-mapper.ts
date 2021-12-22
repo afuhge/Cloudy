@@ -123,14 +123,16 @@ export class WeatherServiceMapper {
 
   private parseHourlyWeather(hourly: IHourly[]): IHourlyWeather[] {
     const response: IHourlyWeather[] = [];
+    const slicedHourly = hourly.slice(0, 24);
 
-    if (!hourly) {
+    if (!slicedHourly) {
       return;
     }
 
-    hourly.forEach((el: IHourly) => {
+    slicedHourly.forEach((el: IHourly) => {
       const hour: IHourlyWeather = {
         clouds: el.clouds,
+        hour: new Date((+el.dt) * 1000).getHours(),
         feels_like: el.feels_like,
         humidity: el.humidity,
         temp: el.temp,

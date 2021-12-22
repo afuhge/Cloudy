@@ -67,6 +67,7 @@ export interface  IWeatherAlert {
 export interface  IHourlyWeather {
   clouds: number;
   feels_like: string;
+  hour: number;
   humidity: number;
   temp: string;
   uvi: string;

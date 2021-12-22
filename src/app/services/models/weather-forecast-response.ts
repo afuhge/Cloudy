@@ -49,6 +49,7 @@ export interface IDaily {
 
 export interface IHourly {
     clouds: number;
+    dt: string;
     feels_like: string;
     humidity: number;
     temp: string;

@@ -90,4 +90,18 @@
             </div>
         </div>
     </div>
+
+    <div class="flex pt-4 border-t-2 border-sky-100">
+      <div *ngFor="let hourWeather of hourly" class="p-2 flex flex-col items-center justify-between primary-text-color shadow">
+        <div class="font-semibold">{{hourWeather.hour}}.00</div>
+        <div>
+          <img class="filter drop-shadow-2xl"
+               style="width:75px; height:auto; filter: drop-shadow(4px 4px 15px #70818a);"
+               [src]="'http://openweathermap.org/img/w/' + hourWeather.weather[0].icon +'.png'">
+        </div>
+        <div>
+          <span class="font-semibold">{{ hourWeather.temp | convertUnits }}</span>
+        </div>
+      </div>
+    </div>
 </div>

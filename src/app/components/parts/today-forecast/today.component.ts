@@ -19,6 +19,9 @@ export class TodayComponent extends BaseTodayComponent implements  OnInit{
   @Input() hourly: IHourlyWeather[];
   @Input() alerts: IWeatherAlert[];
 
+  public temp: string;
+  public icon: string;
+
   ngOnInit(): void {
     if (this.current) {
       if (this.current.weather.length) {
