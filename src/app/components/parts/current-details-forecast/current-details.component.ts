@@ -9,11 +9,11 @@ import { BaseTodayComponent } from '../../base-today/base-today.component';
 
 
 @Component({
-  selector: 'app-today',
-  templateUrl: './today.component.html',
-  styleUrls: ['./today.component.scss']
+  selector: 'app-current-details',
+  templateUrl: './current-details.component.html',
+  styleUrls: ['./current-details.component.scss']
 })
-export class TodayComponent extends BaseTodayComponent implements  OnInit{
+export class CurrentDetailsComponent extends BaseTodayComponent implements  OnInit{
 
   @Input() current: ICurrentWeather;
   @Input() hourly: IHourlyWeather[];

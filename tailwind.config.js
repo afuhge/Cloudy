@@ -5,12 +5,12 @@ module.exports = {
   './src/**/*.html',
   './src/**/*.js',
 ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'class', 
   theme: {
     extend: {
       keyframes: {
         fly: {
-          '100%': { transform: 'translateX(50%) translateY(20%)' },
+          '100%': { transform: 'translate(40%)' },
         }
       },
       animation: {
@@ -25,6 +25,9 @@ module.exports = {
       red: colors.red,
       amber: colors.amber,
       orange: colors.orange,
+      teal: colors.teal,
+      emerald: colors.emerald,
+      gray: colors.gray,
     }
   },
   variants: {

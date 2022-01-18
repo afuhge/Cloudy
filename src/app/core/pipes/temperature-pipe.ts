@@ -7,7 +7,7 @@ export class  TemperaturePipe implements PipeTransform {
   public transform(temperature: string, param?: string): string {
     let temp: number;
     let appendix = '';
-    
+
     if (!temperature) {
        temp = 0;
      } else {

@@ -51,7 +51,7 @@
         <div class="flex flex-col space-y-2 justify-center items-start">
             <div class="flex space-x-2 items-end">
                 <div>
-                    <fa-icon [icon]="umbrella" [fixedWidth]="true" class="text-sky-900"></fa-icon>
+                    <fa-icon [icon]="umbrella" [fixedWidth]="true" class="primary-text-color"></fa-icon>
                 </div>
                 <div class="primary-text-color">
                     {{ rain | convertUnits: 'rain' }}
@@ -60,7 +60,7 @@
             <div class="flex space-x-2 items-end">
                 <div class="flex space-x-2 items-end">
                     <div [ngClass]="windDirectionClasses">
-                        <fa-icon [icon]="arrow" [fixedWidth]="true" class="text-sky-900"></fa-icon>
+                        <fa-icon [icon]="arrow" [fixedWidth]="true" class="primary-text-color"></fa-icon>
                     </div>
                     <div class="primary-text-color">{{ windDirection }}</div>
                 </div>

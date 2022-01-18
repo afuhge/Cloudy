@@ -6,13 +6,15 @@
     </div>
     <div (click)="showTodayDetails()"
          class="flex justify-center">
-     <div class="inline-block cursor-pointer rounded-lg shadow secondary-bg-color p-2 secondary-text-color text-xs">More Details</div>
+     <div class="button button-secondary text-xs">
+       More Details
+     </div>
     </div>
   </div>
   <div class="grid 2xl:grid-cols-3 gap-4 grid-cols-1-4 w-full">
-    <app-daily-widget id="dailyWidget" *ngFor="let day of weatherForecast.daily; let i = index" [day]="day"
+    <app-daily-widget *ngFor="let day of weatherForecast.daily; let i = index" [day]="day"
                       [index]="i" [today]="today"
-                      class="rounded-md p-4" style="background: linear-gradient(135deg, #F0F9FF, rgba(240,249,255,0.3));">
+                      class="rounded-md p-4" [ngClass]="{'light-gradient' : !this.isDark, 'dark-gradient': isDark }">
     </app-daily-widget>
   </div>
 

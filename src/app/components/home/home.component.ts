@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit} from '@angular/core';
+import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
 import {IconDefinition} from '@fortawesome/fontawesome-svg-core';
 import { faMapMarkerAlt, faSearch, faSearchLocation, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FormControl, FormGroup } from '@angular/forms';
@@ -6,6 +6,7 @@ import { ICity, ICoordinates, WeatherForecast } from '../../core/models';
 import { WeatherForecastApiService } from '../../services/weather-forecast-api.service';
 import { CityApiService } from '../../services/city-api.service';
 import {ShowCurrentWeatherDetailsService} from '../../services/show-current-weather-details.service';
+import {CurrentThemeService} from '../../services/current-theme.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,8 @@ import {ShowCurrentWeatherDetailsService} from '../../services/show-current-weat
 export class HomeComponent implements OnInit {
   public search: IconDefinition = faSearch;
   public reset: IconDefinition = faTimes;
+
+  public isDark: boolean;
 
   public searchForm: FormGroup = new FormGroup({
     city: new FormControl(''),
@@ -33,11 +36,16 @@ export class HomeComponent implements OnInit {
     private weatherForecastService: WeatherForecastApiService,
     private cityService: CityApiService,
     public showDetailsService: ShowCurrentWeatherDetailsService,
+    public currentThemeService: CurrentThemeService,
   ) {
     this.searchForm.valueChanges.subscribe((value) => {
       this.searchCity();
     });
     this.showDetailsService.hide();
+
+    this.currentThemeService.isDarkTheme$.subscribe((isDarkTheme: boolean) => {
+      this.isDark = isDarkTheme;
+    });
   }
 
   private showPosition(position): void {
@@ -51,6 +59,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getCurrentLocation();
   }
+
 
   private getCurrentLocation(): void {
     if (navigator.geolocation) {
@@ -70,12 +79,10 @@ export class HomeComponent implements OnInit {
     };
     this.weatherForecastService.fetchWeatherForecast(coords)
       .subscribe((response: WeatherForecast) => {
-        this.weatherForecast = response;
-        this.weatherForecast.daily.splice(0, 1);
-        this.weatherForecast.daily.splice(this.weatherForecast.daily.length - 1, -1);
-        console.log(this.weatherForecast);
+        this.setUpData(response);
         this.city = city.name;
         this.country = city.country;
+      }, (error) => {
         this.isLoading = false;
       });
   }
@@ -86,15 +93,20 @@ export class HomeComponent implements OnInit {
       this.weatherForecastService.fetchWeatherForecast(currentLocation)
         .subscribe((response: WeatherForecast) => {
           this.city = 'Current Location';
-          this.weatherForecast = response;
-          this.weatherForecast.daily.splice(0, 1);
-          this.weatherForecast.daily.splice(this.weatherForecast.daily.length - 1, 1);
-          console.log(this.weatherForecast);
-          this.isLoading = false;
+          this.setUpData(response);
         }, (error) => {
           this.isLoading = false;
         });
     }
+  }
+
+  private setUpData(response: WeatherForecast): void {
+    this.weatherForecast = response;
+    this.weatherForecast.daily.splice(0, 1);
+    this.weatherForecast.daily.splice(this.weatherForecast.daily.length - 1, 1);
+    console.log(this.weatherForecast);
+    this.setDarkTheme(this.weatherForecast);
+    this.isLoading = false;
   }
 
   public searchCity(): void {
@@ -115,5 +127,20 @@ export class HomeComponent implements OnInit {
 
   public setShowDetails(): void {
     this.showDetailsService.hide();
+  }
+
+  private setDarkTheme(weatherForecast: WeatherForecast): void {
+      const time: Date = new Date();
+      if (weatherForecast && weatherForecast.current) {
+        if (time.valueOf() / 1000 < +weatherForecast.current.sunset) {
+          document.documentElement.classList.remove('dark');
+          console.log('day time');
+          this.currentThemeService.setLightTheme();
+        } else {
+          document.documentElement.classList.add('dark');
+          console.log('night time');
+          this.currentThemeService.setDarkTheme();
+        }
+      }
   }
 }

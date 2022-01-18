@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CurrentWidgetModule } from '../parts/current-widget/current-widget.module';
 import { DailyWidgetModule } from '../parts/daily-widget/daily-widget.module';
 import {WeatherForecastModule} from '../parts/weather-forecast/weather-forecast.module';
-import {TodayModule} from '../parts/today-forecast/today.module';
+import {CurrentDetailsModule} from '../parts/current-details-forecast/current-details.module';
 
 
 
@@ -28,7 +28,7 @@ import {TodayModule} from '../parts/today-forecast/today.module';
     CurrentWidgetModule,
     DailyWidgetModule,
     WeatherForecastModule,
-    TodayModule,
+    CurrentDetailsModule,
   ],
   exports: [
     HomeComponent,

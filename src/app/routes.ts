@@ -6,7 +6,13 @@ export const routes: Routes = [
     loadChildren: () => import ('./components/home/home.module')
   .then(m => m.HomeModule),
   },
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  {
+    path: 'info',
+    loadChildren: () => import ('./components/info/info.module')
+      .then(m => m.InfoModule)
+  },
+  {
+    path: '',   redirectTo: '/home', pathMatch: 'full' },
   {
     path: '**',
     loadChildren: () => import ('./components/page-not-found/page-not-found.module')

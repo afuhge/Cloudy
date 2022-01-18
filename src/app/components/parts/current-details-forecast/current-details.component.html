@@ -51,7 +51,7 @@
         <div class="flex flex-col space-y-2 justify-center items-start">
             <div class="flex space-x-2 items-end">
                 <div>
-                    <fa-icon [icon]="umbrella" [fixedWidth]="true" class="text-sky-900"></fa-icon>
+                    <fa-icon [icon]="umbrella" [fixedWidth]="true" class="primary-text-color"></fa-icon>
                 </div>
                 <div class="primary-text-color">
                     {{ rain | convertUnits: 'rain' }}
@@ -60,7 +60,7 @@
             <div class="flex space-x-2 items-end">
                 <div class="flex space-x-2 items-end">
                     <div [ngClass]="windDirectionClasses">
-                        <fa-icon [icon]="arrow" [fixedWidth]="true" class="text-sky-900"></fa-icon>
+                        <fa-icon [icon]="arrow" [fixedWidth]="true" class="primary-text-color"></fa-icon>
                     </div>
                     <div class="primary-text-color">{{ windDirection }}</div>
                 </div>
@@ -91,12 +91,14 @@
         </div>
     </div>
 
-    <div class="flex pt-4 border-t-2 border-sky-100">
-      <div *ngFor="let hourWeather of hourly" class="p-2 flex flex-col items-center justify-between primary-text-color shadow">
-        <div class="font-semibold">{{hourWeather.hour}}.00</div>
+    <div class="flex pt-8 border-t-2 border-sky-100 space-x-2  pb-8 overflow-x-scroll">
+      <div *ngFor="let hourWeather of hourly"
+           style="border: 2px solid #e0f2fe; border-radius: 10%;"
+           class="py-6 px-10 flex flex-col space-y-2 items-center justify-between primary-text-color">
+        <div class="font-semibold" style="white-space: nowrap;">{{hourWeather.hour | time }}</div>
         <div>
           <img class="filter drop-shadow-2xl"
-               style="width:75px; height:auto; filter: drop-shadow(4px 4px 15px #70818a);"
+               style="width: 100px; height: auto; filter: drop-shadow(4px 4px 15px #70818a);"
                [src]="'http://openweathermap.org/img/w/' + hourWeather.weather[0].icon +'.png'">
         </div>
         <div>
