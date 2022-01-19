@@ -7,10 +7,10 @@
             </div>
             <div class="text-sm text-red-500">
                 <div>
-                    {{ weatherAlert[0].event }}
+                    {{ weatherAlert.event }}
                 </div>
                 <div>
-                    {{ weatherAlert[0].start | date: 'shortTime' }} - {{ weatherAlert[0].end | date: 'shortTime'}}
+                    {{ weatherAlert.start | date: 'shortTime' }} - {{ weatherAlert.end | date: 'shortTime'}}
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ export class WeatherForecastUrlHelperService {
     this.REST_API_KEY = this.environment.weatherForecastService.key;
   }
   public getUrlWeatherForecast(lat: string, lon: string): IApiUrl {
-    const url: string = `${this.REST_API_URL}?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&appid=${this.REST_API_KEY}`;
+    const url: string = `${this.REST_API_URL}?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&lang=en&appid=${this.REST_API_KEY}`;
 
     return new ApiUrl(url);
   }

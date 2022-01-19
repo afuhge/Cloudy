@@ -31,7 +31,7 @@ export class CurrentWidgetComponent extends BaseTodayComponent implements OnInit
     }
 
     if (this.alerts) {
-      this.weatherAlert = [...this.alerts];
+      this.weatherAlert = this.alerts[1];
     }
   }
 

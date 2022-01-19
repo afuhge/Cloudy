@@ -19,7 +19,6 @@ export class CurrentDetailsComponent extends BaseTodayComponent implements  OnIn
   @Input() hourly: IHourlyWeather[];
   @Input() alerts: IWeatherAlert[];
 
-  public temp: string;
   public icon: string;
 
   ngOnInit(): void {
@@ -39,7 +38,7 @@ export class CurrentDetailsComponent extends BaseTodayComponent implements  OnIn
     }
 
     if (this.alerts) {
-      this.weatherAlert = [...this.alerts];
+      this.weatherAlert = this.alerts[1];
     }
   }
 }

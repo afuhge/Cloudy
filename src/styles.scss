@@ -52,7 +52,7 @@ body {
 }
 
 .button {
-  @apply font-semibold inline-block cursor-pointer rounded-lg shadow  p-2;
+  @apply font-semibold inline-block cursor-pointer rounded-lg shadow px-4  p-2;
 }
 
 .button-primary {

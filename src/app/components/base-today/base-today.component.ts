@@ -32,7 +32,7 @@ export class BaseTodayComponent {
   public sunrise: Date;
   public sunset: Date;
   public uvi: string;
-  public weatherAlert: IWeatherAlert[];
+  public weatherAlert: IWeatherAlert;
   public alertIcon: IconDefinition = faExclamationTriangle;
   public today: Date = new Date();
 
