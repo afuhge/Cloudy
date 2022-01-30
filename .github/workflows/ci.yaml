@@ -24,7 +24,7 @@ jobs:
           path: ./dist
 
   deploy:
-    depends-on: build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download build files
