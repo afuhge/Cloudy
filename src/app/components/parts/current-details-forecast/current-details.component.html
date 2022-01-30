@@ -40,7 +40,7 @@
         <div class="flex flex-col items-center ">
             <img class="filter drop-shadow-2xl"
                  style="width:85px; height:auto; filter: drop-shadow(4px 4px 15px #70818a);"
-                 [src]="'http://openweathermap.org/img/w/' + icon +'.png'">
+                 [src]="'https://openweathermap.org/img/w/' + icon +'.png'">
             <div class="primary-text-color">
                 {{ description }}
             </div>
@@ -99,7 +99,7 @@
         <div>
           <img class="filter drop-shadow-2xl"
                style="width: 100px; height: auto; filter: drop-shadow(4px 4px 15px #70818a);"
-               [src]="'http://openweathermap.org/img/w/' + hourWeather.weather[0].icon +'.png'">
+               [src]="'https://openweathermap.org/img/w/' + hourWeather.weather[0].icon +'.png'">
         </div>
         <div>
           <span class="font-semibold">{{ hourWeather.temp | convertUnits }}</span>

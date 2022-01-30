@@ -9,7 +9,7 @@ export const environment = {
     key: 'abef800baf0f5c61c78b4ce85e3031e3',
   },
   cityService: {
-    url: 'http://api.openweathermap.org/geo/1.0/direct',
+    url: 'https://api.openweathermap.org/geo/1.0/direct',
     key: 'abef800baf0f5c61c78b4ce85e3031e3',
   },
 };
