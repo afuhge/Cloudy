@@ -28,6 +28,7 @@ jobs:
       - run: npm run lint
 
   build:
+    needs: linting
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
