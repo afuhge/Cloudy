@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { IAlerts, ICurrent, IDaily, IHourly, WeatherForecastResponse } from '../services/models';
+import {
+  IAlerts,
+  ICurrent,
+  IDaily,
+  IHourly,
+  IRainResponse,
+  ISnowResponse,
+  WeatherForecastResponse
+} from '../services/models';
 import {
   ICurrentWeather,
   IDailyWeather,
@@ -38,26 +46,24 @@ export class WeatherServiceMapper {
     return response;
   }
 
-  private static parseRain (source: any): IRain {
+  private static parseRain (source: IRainResponse): IRain {
     if (!source) {
       return;
     }
 
     const rain: IRain = {
-      lastThreeHours: source['3h'],
       lastOneHour: source['1h'],
     };
 
     return rain;
   }
 
-  private static parseSnow (source: any): ISnow {
+  private static parseSnow (source: ISnowResponse): ISnow {
     if (!source) {
       return;
     }
 
     const snow: ISnow = {
-      lastThreeHours: source['3h'],
       lastOneHour: source['1h'],
     };
 

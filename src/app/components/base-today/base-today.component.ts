@@ -31,7 +31,7 @@ export class BaseTodayComponent {
 
   public date: Date;
   public windDirection: string;
-  public windDirectionClasses: any;
+  public windDirectionClass: string;
   public rain: string;
   public feelsLike: string;
   public humidity: number;
@@ -43,24 +43,25 @@ export class BaseTodayComponent {
   public today: Date = new Date();
 
   public setWindDirectionClasses (): void {
-    this.windDirectionClasses = {
-      rotateToSouth: this.windDirection === 'S',
-      rotateToSouthEast: this.windDirection === 'SE',
-      rotateToSouthSouthEast: this.windDirection === 'SSE',
-      rotateToSouthWest: this.windDirection === 'SW',
-      rotateToSouthSouthWest: this.windDirection === 'SSW',
-      rotateToEast: this.windDirection === 'E',
-      rotateToEastNorthEast: this.windDirection === 'ENE',
-      rotateToEastSouthEast: this.windDirection === 'ESE',
-      rotateToWest: this.windDirection === 'W',
-      rotateToWestNorthWest: this.windDirection === 'WNW',
-      rotateToWestSouthWest: this.windDirection === 'WSW',
-      rotateToNorth: this.windDirection === 'N',
-      rotateToNorthNorthEast: this.windDirection === 'NNE',
-      rotateToNorthEast: this.windDirection === 'NE',
-      rotateToNorthWest: this.windDirection === 'NW',
-      rotateToNorthNorthWest: this.windDirection === 'NNW',
-    };
+    switch (this.windDirection) {
+      case 'S': this.windDirectionClass = 'rotateToSouth'; break;
+      case 'SE': this.windDirectionClass = 'rotateToSouthEast'; break;
+      case 'SSE': this.windDirectionClass = 'rotateToSouthSouthEast'; break;
+      case 'SW': this.windDirectionClass = 'rotateToSouthWest'; break;
+      case 'SSW': this.windDirectionClass = 'rotateToSouthSouthWest'; break;
+      case 'E': this.windDirectionClass = 'rotateToEast'; break;
+      case 'ENE': this.windDirectionClass = 'rotateToEastNorthEast'; break;
+      case 'ESE': this.windDirectionClass = 'rotateToEastSouthEast'; break;
+      case 'W': this.windDirectionClass = 'rotateToWest'; break;
+      case 'WNW': this.windDirectionClass = 'rotateToWestNorthWest'; break;
+      case 'WSW': this.windDirectionClass = 'rotateToWestSouthWest'; break;
+      case 'N': this.windDirectionClass = 'rotateToNorth'; break;
+      case 'NNE': this.windDirectionClass = 'rotateToNorthNorthEast'; break;
+      case 'NE': this.windDirectionClass = 'rotateToNorthEast'; break;
+      case 'NW': this.windDirectionClass = 'rotateToNorthWest'; break;
+      case 'NNW': this.windDirectionClass = 'rotateToNorthNorthWest'; break;
+      default: this.windDirection = 'rotateToSouth;'
+    }
   }
 
 }

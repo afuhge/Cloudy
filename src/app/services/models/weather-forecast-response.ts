@@ -9,8 +9,16 @@ export interface ICurrent {
   weather: IWeather[];
   wind_deg: number;
   wind_speed: string;
-  rain?: any;
-  snow?: any;
+  rain?: IRainResponse;
+  snow?: ISnowResponse;
+}
+
+export interface IRainResponse {
+  '1h': string,
+}
+
+export interface ISnowResponse {
+  '1h': string,
 }
 
 export interface IWeather {

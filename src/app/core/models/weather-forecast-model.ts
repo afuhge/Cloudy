@@ -15,12 +15,10 @@ export interface ICurrentWeather {
 
 export interface IRain {
   lastOneHour?: string;
-  lastThreeHours?: string;
 }
 
 export interface ISnow {
   lastOneHour?: string;
-  lastThreeHours?: string;
 }
 
 export interface IWeather {

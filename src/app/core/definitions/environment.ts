@@ -1,4 +1,6 @@
+import { IService } from './service-interface';
+
 export interface IEnvironment {
-  weatherForecastService?: any;
-  cityService?: any;
+  weatherForecastService?: IService;
+  cityService?: IService;
 }
