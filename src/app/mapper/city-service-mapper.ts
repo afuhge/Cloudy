@@ -7,7 +7,7 @@ import { ICityResponse } from '../services/models';
 })
 export class CityServiceMapper {
 
-  public parseCityResponse(response: ICityResponse[]): ICity[] {
+  public parseCityResponse (response: ICityResponse[]): ICity[] {
     const cities: ICity[] = [];
 
     if (!response) {

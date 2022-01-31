@@ -97,15 +97,11 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
             ]
           }
         },
@@ -122,47 +118,10 @@
           }
         }
       }
-    },
-    "definitions": {
-      "projectType": "library",
-      "root": "projects/definitions",
-      "sourceRoot": "projects/definitions/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-angular:ng-packagr",
-          "options": {
-            "tsConfig": "projects/definitions/tsconfig.lib.json",
-            "project": "projects/definitions/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/definitions/tsconfig.lib.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/definitions/src/test.ts",
-            "tsConfig": "projects/definitions/tsconfig.spec.json",
-            "karmaConfig": "projects/definitions/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/definitions/tsconfig.lib.json",
-              "projects/definitions/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
     }
   },
-  "defaultProject": "weather-app"
+  "defaultProject": "weather-app",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

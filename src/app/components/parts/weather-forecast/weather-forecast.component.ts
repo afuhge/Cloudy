@@ -1,8 +1,8 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from '@angular/router';
-import {WeatherForecast} from '../../../core/models';
-import {ShowCurrentWeatherDetailsService} from '../../../services/show-current-weather-details.service';
-import {CurrentThemeService} from '../../../services/current-theme.service';
+import { Component, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { WeatherForecast } from '../../../core/models';
+import { ShowCurrentWeatherDetailsService } from '../../../services/show-current-weather-details.service';
+import { CurrentThemeService } from '../../../services/current-theme.service';
 
 @Component({
   selector: 'app-weather-forecast',
@@ -14,7 +14,7 @@ export class WeatherForecastComponent {
   public today: Date = new Date();
   public isDark: boolean;
 
-  constructor(
+  constructor (
     private router: Router,
     private showDetailsService: ShowCurrentWeatherDetailsService,
     public currentThemeService: CurrentThemeService,
@@ -24,7 +24,7 @@ export class WeatherForecastComponent {
     });
   }
 
-  public showTodayDetails(): void {
+  public showTodayDetails (): void {
     this.showDetailsService.show();
   }
 }

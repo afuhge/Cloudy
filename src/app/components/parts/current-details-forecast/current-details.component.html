@@ -92,18 +92,18 @@
     </div>
 
     <div class="flex pt-8 border-t-2 border-sky-100 space-x-2  pb-8 overflow-x-scroll">
-      <div *ngFor="let hourWeather of hourly"
-           style="border: 2px solid #e0f2fe; border-radius: 10%;"
-           class="py-6 px-10 flex flex-col space-y-2 items-center justify-between primary-text-color">
-        <div class="font-semibold" style="white-space: nowrap;">{{hourWeather.hour | time }}</div>
-        <div>
-          <img class="filter drop-shadow-2xl"
-               style="width: 100px; height: auto; filter: drop-shadow(4px 4px 15px #70818a);"
-               [src]="'https://openweathermap.org/img/w/' + hourWeather.weather[0].icon +'.png'">
+        <div *ngFor="let hourWeather of hourly"
+             style="border: 2px solid #e0f2fe; border-radius: 10%;"
+             class="py-6 px-10 flex flex-col space-y-2 items-center justify-between primary-text-color">
+            <div class="font-semibold" style="white-space: nowrap;">{{hourWeather.hour | time }}</div>
+            <div>
+                <img class="filter drop-shadow-2xl"
+                     style="width: 100px; height: auto; filter: drop-shadow(4px 4px 15px #70818a);"
+                     [src]="'https://openweathermap.org/img/w/' + hourWeather.weather[0].icon +'.png'">
+            </div>
+            <div>
+                <span class="font-semibold">{{ hourWeather.temp | convertUnits }}</span>
+            </div>
         </div>
-        <div>
-          <span class="font-semibold">{{ hourWeather.temp | convertUnits }}</span>
-        </div>
-      </div>
     </div>
 </div>

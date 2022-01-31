@@ -15,10 +15,10 @@ body {
   font-family: 'Quicksand', sans-serif;
 }
 
-   /* width */
- ::-webkit-scrollbar {
-   width: 10px;
- }
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
 
 /* Track */
 ::-webkit-scrollbar-track {
@@ -31,8 +31,9 @@ body {
   background: #075985;
   border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
- cursor: pointer;
+  cursor: pointer;
 }
 
 .primary-bg-color {
@@ -66,4 +67,75 @@ body {
 .page-not-found {
   background: url('/assets/storm_clouds.jpg') no-repeat fixed;
   background-size: 100% 100%;
+}
+
+// ---------East--------------
+.rotateToEast {
+  transform: rotate(45deg);
+}
+
+.rotateToEastNorthEast {
+  transform: rotate(20deg);
+}
+
+.rotateToEastSouthEast {
+  transform: rotate(70deg);
+}
+
+// ---------WEST--------------
+
+.rotateToWest {
+  transform: rotate(225deg);
+}
+
+.rotateToWestSouthWest {
+  transform: rotate(200deg);
+}
+
+.rotateToWestNorthWest {
+  transform: rotate(250deg);
+}
+
+// ---------South--------------
+
+.rotateToSouth {
+  transform: rotate(135deg);
+}
+
+.rotateToSouthEast {
+  transform: rotate(90deg);
+}
+
+
+.rotateToSouthWest {
+  transform: rotate(180deg);
+}
+
+.rotateToSouthSouthWest {
+  transform: rotate(170deg);
+}
+
+.rotateToSouthSouthEast {
+  transform: rotate(110deg);
+}
+
+// ---------North--------------
+.rotateToNorth {
+  transform: rotate(-45deg);
+}
+
+.rotateToNorthWest {
+  transform: rotate(270deg);
+}
+
+.rotateToNorthNorthWest {
+  transform: rotate(290deg);
+}
+
+.rotateToNorthEast {
+  transform: rotate(0deg);
+}
+
+.rotateToNorthNorthEast {
+  transform: rotate(-20deg);
 }

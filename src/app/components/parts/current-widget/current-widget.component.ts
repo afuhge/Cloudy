@@ -1,20 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {ICurrentWeather, IWeatherAlert} from '../../../core/models';
+import { ICurrentWeather, IWeatherAlert } from '../../../core/models';
 import { DailyWidgetComponent } from '../daily-widget/daily-widget.component';
 import { BaseTodayComponent } from '../../base-today/base-today.component';
-import {ShowCurrentWeatherDetailsService} from '../../../services/show-current-weather-details.service';
 
 @Component({
   selector: 'app-current-widget',
   templateUrl: './current-widget.component.html',
-  styleUrls: ['./current-widget.component.scss'],
 })
 export class CurrentWidgetComponent extends BaseTodayComponent implements OnInit {
 
   @Input() day: ICurrentWeather;
   @Input() alerts: IWeatherAlert[];
 
-  ngOnInit(): void {
+  public ngOnInit (): void {
     if (this.day) {
       if (this.day.weather.length) {
         this.icon = this.day.weather[0].icon;

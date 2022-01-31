@@ -11,14 +11,14 @@ export class WeatherForecastUrlHelperService {
   private readonly REST_API_URL: string;
   private readonly REST_API_KEY: string;
 
-  constructor(
+  constructor (
     @Inject(ENVIRONMENT) public environment: IEnvironment,
-
   ) {
     this.REST_API_URL = this.environment.weatherForecastService.url;
     this.REST_API_KEY = this.environment.weatherForecastService.key;
   }
-  public getUrlWeatherForecast(lat: string, lon: string): IApiUrl {
+
+  public getUrlWeatherForecast (lat: string, lon: string): IApiUrl {
     const url: string = `${this.REST_API_URL}?lat=${lat}&lon=${lon}&units=metric&exclude=minutely&lang=en&appid=${this.REST_API_KEY}`;
 
     return new ApiUrl(url);

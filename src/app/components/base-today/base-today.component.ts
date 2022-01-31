@@ -1,13 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
-  faExclamationTriangle, faLocationArrow, faLongArrowAltDown, faLongArrowAltUp, faSun, faTemperatureHigh, faUmbrella, faWind,
+  faExclamationTriangle,
+  faLocationArrow,
+  faLongArrowAltDown,
+  faLongArrowAltUp,
+  faSun,
+  faTemperatureHigh,
+  faUmbrella,
+  faWind,
 } from '@fortawesome/free-solid-svg-icons';
 import { IWeatherAlert } from '../../core/models';
 
 @Component({
   selector: 'app-base-today',
-  styleUrls: [`./base-today.component.scss`],
   templateUrl: './base-today.component.html',
 })
 export class BaseTodayComponent {
@@ -36,8 +42,7 @@ export class BaseTodayComponent {
   public alertIcon: IconDefinition = faExclamationTriangle;
   public today: Date = new Date();
 
-
-  public setWindDirectionClasses(): void {
+  public setWindDirectionClasses (): void {
     this.windDirectionClasses = {
       rotateToSouth: this.windDirection === 'S',
       rotateToSouthEast: this.windDirection === 'SE',

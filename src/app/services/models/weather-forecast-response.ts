@@ -13,7 +13,7 @@ export interface ICurrent {
   snow?: any;
 }
 
-export interface  IWeather {
+export interface IWeather {
   description: string;
   icon: string;
 }
@@ -48,17 +48,17 @@ export interface IDaily {
 }
 
 export interface IHourly {
-    clouds: number;
-    dt: string;
-    feels_like: string;
-    humidity: number;
-    temp: string;
-    uvi: string;
-    weather: IWeather[];
-    wind_deg: number;
-    wind_gust: string;
-    wind_speed: string;
-    rain: string;
+  clouds: number;
+  dt: string;
+  feels_like: string;
+  humidity: number;
+  temp: string;
+  uvi: string;
+  weather: IWeather[];
+  wind_deg: number;
+  wind_gust: string;
+  wind_speed: string;
+  rain: string;
 }
 
 export interface IAlerts {

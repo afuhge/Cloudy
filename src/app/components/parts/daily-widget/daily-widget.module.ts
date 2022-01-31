@@ -4,8 +4,6 @@ import { DailyWidgetComponent } from './daily-widget.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TemperaturePipeModule } from '../../../core/pipes';
 
-
-
 @NgModule({
   declarations: [
     DailyWidgetComponent
@@ -19,4 +17,4 @@ import { TemperaturePipeModule } from '../../../core/pipes';
     DailyWidgetComponent,
   ],
 })
-export class DailyWidgetModule { }
+export class DailyWidgetModule {}

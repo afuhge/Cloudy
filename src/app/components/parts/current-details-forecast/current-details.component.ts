@@ -1,27 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
-import {
-  faExclamationTriangle, faLocationArrow, faLongArrowAltDown, faLongArrowAltUp, faSun, faTemperatureHigh, faUmbrella, faWind,
-} from '@fortawesome/free-solid-svg-icons';
 import { ICurrentWeather, IHourlyWeather, IWeatherAlert } from '../../../core/models';
 import { DailyWidgetComponent } from '../daily-widget/daily-widget.component';
 import { BaseTodayComponent } from '../../base-today/base-today.component';
 
-
 @Component({
   selector: 'app-current-details',
   templateUrl: './current-details.component.html',
-  styleUrls: ['./current-details.component.scss']
 })
-export class CurrentDetailsComponent extends BaseTodayComponent implements  OnInit{
-
+export class CurrentDetailsComponent extends BaseTodayComponent implements OnInit {
   @Input() current: ICurrentWeather;
   @Input() hourly: IHourlyWeather[];
   @Input() alerts: IWeatherAlert[];
 
-  public icon: string;
-
-  ngOnInit(): void {
+  public ngOnInit (): void {
     if (this.current) {
       if (this.current.weather.length) {
         this.icon = this.current.weather[0].icon;

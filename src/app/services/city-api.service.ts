@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ENVIRONMENT } from '../core/tokens/environment_token';
 import { IEnvironment } from '../core/definitions/environment';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { ICityResponse } from './models';
 import { catchError, map } from 'rxjs/operators';
 import { ICity } from '../core/models';
@@ -16,7 +16,7 @@ export class CityApiService {
 
   private readonly API_KEY: string;
 
-  constructor(
+  constructor (
     private http: HttpClient,
     private urlService: CityUrlHelperService,
     private cityMapper: CityServiceMapper,
@@ -25,7 +25,7 @@ export class CityApiService {
     this.API_KEY = environment.cityService.key;
   }
 
-  public getCitySuggestions(searchTerm: string): Observable<ICity[]> {
+  public getCitySuggestions (searchTerm: string): Observable<ICity[]> {
     // get city suggestions
     const url: string = this.urlService.getUrlCityService(searchTerm).url;
 

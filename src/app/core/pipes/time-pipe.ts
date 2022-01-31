@@ -1,11 +1,11 @@
-import {Pipe, PipeTransform} from '@angular/core';
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'time'
 })
 export class TimePipe implements PipeTransform {
-  transform(hour: number): string {
-    return hour < 12 ? `${hour}:00 am` :  `${hour - 12}:00 pm`;
+  public transform (hour: number): string {
+    return hour < 12 ? `${hour}:00 am` : `${hour - 12}:00 pm`;
   }
 
 }

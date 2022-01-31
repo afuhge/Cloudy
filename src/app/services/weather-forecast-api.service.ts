@@ -15,7 +15,7 @@ import { WeatherForecastUrlHelperService } from './weather-forecast-url-helper.s
 export class WeatherForecastApiService {
   private readonly API_KEY: string;
 
-  constructor(
+  constructor (
     private http: HttpClient,
     private urlService: WeatherForecastUrlHelperService,
     private weatherMapper: WeatherServiceMapper,
@@ -24,7 +24,7 @@ export class WeatherForecastApiService {
     this.API_KEY = environment.weatherForecastService.key;
   }
 
-  public fetchWeatherForecast(coords: ICoordinates): Observable<WeatherForecast> {
+  public fetchWeatherForecast (coords: ICoordinates): Observable<WeatherForecast> {
     const url: string = this.urlService.getUrlWeatherForecast(coords.lat, coords.lon).url;
 
     return this.http.get(url)

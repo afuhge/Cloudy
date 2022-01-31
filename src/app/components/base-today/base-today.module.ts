@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BaseTodayComponent } from './base-today.component';
 
-
-
 @NgModule({
   declarations: [
     BaseTodayComponent,
@@ -11,8 +9,8 @@ import { BaseTodayComponent } from './base-today.component';
   imports: [
     CommonModule,
   ],
-  exports : [
+  exports: [
     BaseTodayComponent,
   ],
 })
-export class BaseTodayModule { }
+export class BaseTodayModule {}

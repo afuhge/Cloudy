@@ -13,17 +13,17 @@ export interface ICurrentWeather {
   snow?: ISnow;
 }
 
-export interface  IRain {
-  lastOneHour?: string;
-  lastThreeHours?: string;
-}
-export interface  ISnow {
+export interface IRain {
   lastOneHour?: string;
   lastThreeHours?: string;
 }
 
+export interface ISnow {
+  lastOneHour?: string;
+  lastThreeHours?: string;
+}
 
-export interface  IWeather {
+export interface IWeather {
   description: string;
   icon: string;
 }
@@ -57,14 +57,14 @@ export interface IDailyWeather {
   rain: string;
 }
 
-export interface  IWeatherAlert {
+export interface IWeatherAlert {
   description: string;
   event: string;
   start: number;
   end: number;
 }
 
-export interface  IHourlyWeather {
+export interface IHourlyWeather {
   clouds: number;
   feels_like: string;
   hour: number;
@@ -77,7 +77,6 @@ export interface  IHourlyWeather {
   wind_speed: string;
   rain: string;
 }
-
 
 export interface WeatherForecast {
   alerts: IWeatherAlert[];

@@ -4,8 +4,6 @@ import { CurrentWidgetComponent } from './current-widget.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TemperaturePipeModule } from '../../../core/pipes';
 
-
-
 @NgModule({
   declarations: [
     CurrentWidgetComponent,
@@ -19,4 +17,4 @@ import { TemperaturePipeModule } from '../../../core/pipes';
     TemperaturePipeModule,
   ],
 })
-export class CurrentWidgetModule { }
+export class CurrentWidgetModule {}

@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import { IAlerts, ICurrent, IDaily, IHourly, WeatherForecastResponse } from '../services/models';
-import { ICurrentWeather, IDailyWeather, IHourlyWeather, IRain, ISnow, IWeatherAlert, WeatherForecast } from '../core/models';
+import {
+  ICurrentWeather,
+  IDailyWeather,
+  IHourlyWeather,
+  IRain,
+  ISnow,
+  IWeatherAlert,
+  WeatherForecast
+} from '../core/models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WeatherServiceMapper {
 
-  private static parseCurrentWeather(current: ICurrent): ICurrentWeather {
+  private static parseCurrentWeather (current: ICurrent): ICurrentWeather {
     if (!current) {
       return;
     }
@@ -30,7 +38,7 @@ export class WeatherServiceMapper {
     return response;
   }
 
-  private static parseRain(source: any): IRain {
+  private static parseRain (source: any): IRain {
     if (!source) {
       return;
     }
@@ -43,7 +51,7 @@ export class WeatherServiceMapper {
     return rain;
   }
 
-  private static parseSnow(source: any): ISnow {
+  private static parseSnow (source: any): ISnow {
     if (!source) {
       return;
     }
@@ -56,7 +64,7 @@ export class WeatherServiceMapper {
     return snow;
   }
 
-  public parseWeatherForecastResponse(source: WeatherForecastResponse): WeatherForecast {
+  public parseWeatherForecastResponse (source: WeatherForecastResponse): WeatherForecast {
     if (!source) {
       return;
     }
@@ -70,7 +78,7 @@ export class WeatherServiceMapper {
     return response;
   }
 
-  private parseDailyWeather(daily: IDaily[]): IDailyWeather[] {
+  private parseDailyWeather (daily: IDaily[]): IDailyWeather[] {
     const response: IDailyWeather[] = [];
     if (!daily) {
       return;
@@ -100,7 +108,7 @@ export class WeatherServiceMapper {
     return response;
   }
 
-  private parseAlertWeather(alerts: IAlerts[]): IWeatherAlert[] {
+  private parseAlertWeather (alerts: IAlerts[]): IWeatherAlert[] {
     const response: IWeatherAlert[] = [];
 
     if (!alerts) {
@@ -121,7 +129,7 @@ export class WeatherServiceMapper {
     return response;
   }
 
-  private parseHourlyWeather(hourly: IHourly[]): IHourlyWeather[] {
+  private parseHourlyWeather (hourly: IHourly[]): IHourlyWeather[] {
     const response: IHourlyWeather[] = [];
     const slicedHourly = hourly.slice(0, 24);
 

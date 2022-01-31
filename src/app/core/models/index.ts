@@ -1,4 +1,3 @@
-
 export * from './api-url-model';
 
 export * from './weather-forecast-model';

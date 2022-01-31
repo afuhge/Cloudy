@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
@@ -8,15 +8,15 @@ export class ShowCurrentWeatherDetailsService {
   public showDetails$: Observable<boolean> = new Observable<boolean>();
   private showDetailsSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  constructor() {
+  constructor () {
     this.showDetails$ = this.showDetailsSubject.asObservable();
   }
 
-  public show(): void {
+  public show (): void {
     this.showDetailsSubject.next(true);
   }
 
-  public hide(): void {
+  public hide (): void {
     this.showDetailsSubject.next(false);
   }
 }

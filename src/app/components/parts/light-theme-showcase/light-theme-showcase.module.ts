@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LightThemeShowcaseComponent } from './light-theme-showcase.component';
 
-
-
 @NgModule({
   declarations: [
     LightThemeShowcaseComponent
@@ -13,4 +11,4 @@ import { LightThemeShowcaseComponent } from './light-theme-showcase.component';
   ],
   exports: [LightThemeShowcaseComponent],
 })
-export class LightThemeShowcaseModule { }
+export class LightThemeShowcaseModule {}
