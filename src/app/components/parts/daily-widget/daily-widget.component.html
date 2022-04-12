@@ -9,7 +9,7 @@
                      [src]="'https://openweathermap.org/img/w/' + icon +'.png'">
             </div>
         </div>
-        <div class="flex flex-col items-center space-y-4">
+        <div class="flex flex-col items-center justify-between">
             <div>
                 <fa-icon [icon]="tempIcon" [fixedWidth]="true" class="primary-text-color sm:text-xl"></fa-icon>
             </div>
@@ -17,7 +17,7 @@
                 <span class="sm:text-2xl text-lg font-semibold">{{ tempMax | convertUnits }}</span> / {{tempMin | convertUnits}}
             </div>
         </div>
-        <div class="flex flex-col items-center space-y-6">
+        <div class="flex flex-col items-center justify-between">
             <div>
                 <fa-icon [icon]="umbrella" [fixedWidth]="true" class="primary-text-color sm:text-xl"></fa-icon>
             </div>
@@ -25,7 +25,7 @@
                 {{ rain | convertUnits: 'rain' }}
             </div>
         </div>
-        <div class="flex flex-col items-center space-y-6">
+        <div class="flex flex-col items-center justify-between">
             <div>
                 <div class="primary-text-color flex space-x-1 items-center">
                     <div [ngClass]="windDirectionClass">
