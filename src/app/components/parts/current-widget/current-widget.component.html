@@ -1,9 +1,9 @@
 <div class="space-y-2">
-    <div class="flex justify-between items-center font-semibold primary-text-color text-2xl mb-4">
+    <div class="flex justify-between items-center font-semibold primary-text-color text-lg sm:text-2xl mb-4">
         <div>Now,  {{ today | date: 'shortTime' }}</div>
         <div class="flex space-x-2 items-center" *ngIf="weatherAlert">
             <div>
-                <fa-icon [icon]="alertIcon" class="text-red-500 text-2xl" [fixedWidth]="true"></fa-icon>
+                <fa-icon [icon]="alertIcon" class="text-red-500 text-lg sm:text-2xl" [fixedWidth]="true"></fa-icon>
             </div>
             <div class="text-sm text-red-500">
                 <div>
@@ -27,9 +27,9 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-around items-center pb-4">
+    <div class="flex justify-around items-end pb-4">
         <div class="primary-text-color  space-y-4 flex flex-col items-center">
-            <div class="font-semibold text-6xl">
+            <div class="font-semibold text-4xl sm:text-6xl">
                 {{ currentTemp | convertUnits }}
             </div>
             <div>

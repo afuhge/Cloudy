@@ -171,7 +171,6 @@
     </div>
 </ng-template>
 
-<!-- mx-auto  w-2/3 p-8-->
 <div class="relative my-12 sm:my-28 mx-auto sm:w-2/3 sm:p-8 w-full rounded-lg p-4 backdrop-filter backdrop-blur"
      style="background: rgba(240, 249, 255,0.15);box-shadow: 0 8px 32px 0 rgba( 7, 89, 133, 0.37 );">
     <div class="flex flex-col space-y-20">
@@ -197,7 +196,7 @@
             <div class="space-y-4" *ngIf="city.length > 0; else noCity">
                 <div class=" flex justify-between">
                     <div class="inline-block  space-x-4 primary-bg-color primary-text-color rounded-md py-2 px-4 text-xl">
-                        <fa-icon [icon]="marker" class="primary-text-color text-xl"></fa-icon>
+                        <fa-icon [icon]="marker" class="primary-text-color sm:text-xl"></fa-icon>
                         <span class="font-semibold">{{ city }} <span
                                 *ngIf="country.length > 0">-&nbsp;</span>{{ country }}</span>
                     </div>
@@ -223,7 +222,7 @@
             <ng-template #noCity>
                 <div class="flex flex-col items-center justify-center space-y-4 primary-bg-color primary-text-color p-4 rounded-md">
                     <div>
-                        <fa-icon [icon]="weather" class="text-5xl"></fa-icon>
+                        <fa-icon [icon]="weather" class="text-3xl sm:text-5xl"></fa-icon>
                     </div>
                     <div class="font-semibold">
                         No current location.

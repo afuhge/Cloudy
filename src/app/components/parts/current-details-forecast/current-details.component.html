@@ -1,9 +1,9 @@
 <div class="space-y-2 font-semibold rounded-md p-4 w-full mb-4 primary-bg-color">
-    <div class="flex justify-between items-center primary-text-color text-2xl mb-4">
+    <div class="flex justify-between items-center primary-text-color text-lg sm:text-2xl mb-4">
         <div>Now,  {{ today | date: 'shortTime' }}</div>
         <div class="flex space-x-2 items-center" *ngIf="weatherAlert">
             <div>
-                <fa-icon [icon]="alertIcon" class="text-red-500 text-2xl" [fixedWidth]="true"></fa-icon>
+                <fa-icon [icon]="alertIcon" class="text-red-500 text-lg sm:text-2xl" [fixedWidth]="true"></fa-icon>
             </div>
             <div class="text-sm text-red-500">
                 <div>
@@ -27,9 +27,9 @@
             </div>
         </div>
     </div>
-    <div class="flex justify-around items-center pb-4">
+    <div class="flex justify-around items-end pb-4">
         <div class="primary-text-color  space-y-4 flex flex-col items-center">
-            <div class="font-semibold text-6xl">
+            <div class="font-semibold text-4xl sm:text-6xl">
                 {{ currentTemp | convertUnits }}
             </div>
             <div>
@@ -94,7 +94,7 @@
     <div class="flex pt-8 border-t-2 border-sky-100 space-x-2  pb-8 overflow-x-scroll">
         <div *ngFor="let hourWeather of hourly"
              style="border: 2px solid #e0f2fe; border-radius: 10%;"
-             class="py-6 px-10 flex flex-col space-y-2 items-center justify-between primary-text-color">
+             class="sm:py-6 sm:px-10 py-3 px-5 flex flex-col space-y-2 items-center justify-between primary-text-color">
             <div class="font-semibold" style="white-space: nowrap;">{{hourWeather.hour | time }}</div>
             <div>
                 <img class="filter drop-shadow-2xl"
