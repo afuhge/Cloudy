@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-family: 'Quicksand', sans-serif;
+  overflow-x: hidden;
 }
 
 /* width */
@@ -53,7 +54,7 @@ body {
 }
 
 .button {
-  @apply font-semibold inline-block cursor-pointer rounded-lg shadow px-4  p-2;
+  @apply flex items-center font-semibold inline-block cursor-pointer rounded-lg shadow px-4  p-2;
 }
 
 .button-primary {
